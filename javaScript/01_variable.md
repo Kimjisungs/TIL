@@ -1,15 +1,3 @@
----
-title: variable (변수)
-date: 
-tags:
-categories:
-- [study,javascript]
----
-
-<span> </span>
-
-<!-- more -->
-
 ## 변수
 
 1. 하나의 값을 저장할 수 있는 메모리 공간에 붙인 이름 또는 메모리 공간 자체를 말한다. 

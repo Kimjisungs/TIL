@@ -1,15 +1,3 @@
----
-title: 자바스크립트 개발 환경 및 실행 환경
-date: 
-tags:
-categories:
-- [study,javascript]
----
-
-<span> </span>
-
-<!-- more -->
-
 ## 자바스크립트 실행환경
 
 모든 브라우저는 자바스크립트를 실행할 수 있는 엔진을 가지고있다. node에서도 역시 작동한다. 브라우저와 node.js는 용도가 다르다. 
