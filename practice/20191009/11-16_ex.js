@@ -45,9 +45,7 @@ function practice(star, number, func, func2) {
   var argFouth = func2;
   var argLength = arguments.length;
 
-  if (argFouth === undefined) {
-    argFouth = null;
-  }
+  argFouth = argFouth || null;
 
   forMun(number, function (value, i) {
     if (argLength === 3 || argLength === 4) {
