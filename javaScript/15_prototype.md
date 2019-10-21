@@ -116,3 +116,8 @@ person 객체에는 toString이라는 프로퍼티가 없지만 아래의 실행
 console.log('toString' in person); // true
 ~~~
 
+
+
+question
+1. 모든 객체는 하나의 프로토타입을 갖는다.
+2. Object.prototype의 프로퍼티인 __proto__ 접근자 프로퍼티는 getter/setter 함수라고 부르는 접근자 함수를 통해 [[Prototype]] 내부 슬롯의 값, 즉 프로토타입을 취득하거나 할당한다.
