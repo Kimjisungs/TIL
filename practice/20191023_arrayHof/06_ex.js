@@ -13,11 +13,8 @@ let todos = [
 ];
 
 function toggleCompletedById(id) {
-  const todo = todos.filter((item) => item.id === id).map((item) => {
-    item.completed = !item.completed;
-    return item;
-  });
-  Object.assign([], todos, todo);
+  //todos = todos.map(todo => todo.id === id ? Object.assign(todo, {completed : !todo.completed}) : todo)
+  todos = todos.map(todo => todo.id === id ? {...todo, completed: !todo.completed} : todo)
 }
 toggleCompletedById(2);
 

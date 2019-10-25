@@ -14,8 +14,8 @@ function render() {
 
   todos.forEach(function (todo) {
     return html += `<li id="${todo.id}">
-    <label><input type="checkbox" ${todo.completed === true ? 'checked' : ''}>${todo.content}</label>
-  </li>`;
+     <label><input type="checkbox" ${todo.completed ? 'checked' : ''}>${todo.content}</label>
+    </li>`;
   });
 
   return html;

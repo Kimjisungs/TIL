@@ -12,12 +12,10 @@ let todos = [
 ];
 
 function toggleCompletedAll() {
-  const copyTodos = todos.map((item) => {
-    item.completed = true;
-    return item;
-  });
-  Object.assign(todos, copyTodos);
-}
+    //todos = todos.map(todo => todo.completed ? todo : Object.assign(todo, {completed: true}));
+    //todos = todos.map(todo => todo.completed ? todo : {...todo, completed : true});
+    todos = todos.map(todo => ({...todo, completed: true}));
+  }
 
 toggleCompletedAll();
 

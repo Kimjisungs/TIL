@@ -12,7 +12,7 @@ let todos = [
 ];
 
 function addTodo(newTodo) {
-  return todos.unshift(newTodo);
+  return todos = [newTodo, ...todos];
 }
 
 addTodo({ id: 4, content: 'Test', completed: false });

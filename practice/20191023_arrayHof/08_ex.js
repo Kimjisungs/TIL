@@ -11,8 +11,9 @@ let todos = [
 ];
 
 function countCompletedTodos() {
-  const count = todos.reduce((pre, cur) => pre + (+cur.completed), 0);
-  return count;
+  return todos.filter(todo => todo.completed).length;
+  //return todos.reduce((pre, cur) => pre + (+cur.completed), 0);
+
 }
 
 console.log(countCompletedTodos()); // 1

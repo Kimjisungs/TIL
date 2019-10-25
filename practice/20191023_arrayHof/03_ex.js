@@ -13,10 +13,11 @@ const todos = [
 ];
 
 function sortBy(key) {
-  const customTodos = todos.map((item) => item).sort((a, b) => {
+  const _todos = [...todos];
+  _todos.sort((a, b) => {
     return a[key] > b[key] ? 1 : (a[key] < b[key] ? -1 : 0);
   });
-  return customTodos;
+  return _todos;
 }
 
 console.log(sortBy('id'));
