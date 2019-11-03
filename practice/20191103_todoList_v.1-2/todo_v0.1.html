@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    input[type="checkbox"]:checked + .text {
+      text-decoration: line-through;
+    }
+  </style>
+</head>
+<body>
+
+  <input type="text" class="inputTag">
+
+  <ul class="todos"></ul>
+
+
+  <script>
+    const $input = document.querySelector('.inputTag');
+    const $todos = document.querySelector('.todos');
+
+    $input.addEventListener('keyup', function (e) {
+      if (e.keyCode !== 13 || $input.value.trim() === '') return;
+
+      $todos.innerHTML += `<li>
+        <label>
+          <input type="checkbox">
+          <span class="text">${this.value}</span>
+        </label>
+        <button type="button" class="btn-close">X</button>
+      </li>`;
+
+      this.value = '';
+    });
+
+    $todos.addEventListener('click', function (e) {
+      if (!e.target.classList.contains('btn-close')) return;
+      this.removeChild(e.target.parentNode);
+    });
+  </script>
+</body>
+</html>

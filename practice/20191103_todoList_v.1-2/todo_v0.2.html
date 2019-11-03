@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    input[type="checkbox"]:checked + .text {
+      text-decoration: line-through;
+    }
+  </style>
+</head>
+<body>
+
+  <input type="text" class="input-tag">
+  <ul class="todos"></ul>
+
+
+  <script>
+    const TAGS = {
+      $todos : '.todos',
+      $input : '.input-tag',
+    };
+
+    class TodoApp {
+      constructor({ $input, $todos }) {
+        this.$todosEl = document.querySelector($todos);
+        this.$inputEL = document.querySelector($input);
+        this.todos = [];
+      }
+
+      event() {
+        window.addEventListener('load', this.basicTodo.bind(this));
+        this.$inputEL.addEventListener('keyup', this.addTodo.bind(this));
+        this.$todosEl.addEventListener('click', this.removeTodo.bind(this));
+        this.$todosEl.addEventListener('change', this.checkedTodo.bind(this));
+      }
+
+      basicTodo() {
+        this.todos = [
+          { id : 1, content: 'HTML', completed: false },
+          { id : 2, content: 'CSS', completed: true },
+          { id : 3, content: 'Javascript', completed: false },
+        ];
+        this.render();
+      }
+
+      render() {
+        let html = '';
+
+        this.todos.forEach(({id, completed, content}) => {
+          html += `
+            <li id="${id}">
+              <label>
+                <input type="checkbox" ${completed ? 'checked' : ''}>
+                <span>${content}</span>
+              </label>
+              <button class="remove">X</button>
+            </li>
+          `;
+        });
+        this.$todosEl.innerHTML = html;
+      }
+
+      addTodo(e) {
+        const content = e.target.value;
+        if (e.keyCode !== 13 || content.trim() === '') return;
+
+        this.add(content, e);
+        this.render();
+      }
+
+      checkedTodo(e) {
+        const targetId = +e.target.parentNode.parentNode.id;
+        const targetChecked = e.target.checked;
+
+        this.checkedChange(targetId, targetChecked);
+        this.render();
+      }
+
+      removeTodo(e) {
+        if (!e.target.classList.contains('remove')) return;
+        const targetId = +e.target.parentNode.id;
+
+        this.remove(targetId);
+        this.render();
+      }
+
+      add(content, e) {
+        let stateId = this.todos[this.todos.length - 1].id;
+        this.todos = [...this.todos, ({id : stateId += 1, content, completed: false})]
+        e.target.value = '';
+      }
+
+      remove(id) {
+        this.todos = this.todos.filter(todo => todo.id !== id);
+      }
+
+      checkedChange(id, checked) {
+        this.todo = [this.todos.find(todo => todo.id === id).completed = checked]
+      }
+    }
+
+    const todoEvent = new TodoApp(TAGS);
+    todoEvent.event();
+
+    /*
+      1. 서버에 있는 데이터를 먼저 로드한다. window가 로드 되었을때.
+      2. 데이터를 입력하여 update한다.
+      3. enter치면 새로운데이터를 추가한다.
+      4. 체크하거나 체크를 풀면 todos의 값을 바꿔야한다.
+      5. 삭제 버튼을 넣는다.
+     */
+  </script>
+</body>
+</html>
