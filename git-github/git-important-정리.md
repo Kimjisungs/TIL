@@ -65,3 +65,4 @@
    1) git remote add pmorigin {팀장 레포 주소}
    2) git remote쳐서 확인
    3) git pull pmorigin develop
+
